@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <div id="app">
+        <h2>Todo List</h2>
+
+        <ul class="list-group">
+            <li class="list-item-group" @click="markTodo(index)" v-for="(todoItem, index) in todoList">
+                <span :class="{ 'todo-item': todoItem.isDone}">{{todoItem.text}}</span>
+                <button @click.stop="removeTodo(index)">&times;</button>
+            </li>
+        </ul>
+
+        <input :autofocus="'autofocus'" type="text" v-model="todoInput" v-on:keyup="onEnterClick" >
+        <button @click="addTodo">Add Todo</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script src="./index.js"></script>
+</body>
+
+</html>
